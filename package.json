@@ -1,0 +1,19 @@
+{
+  "name": "vscode-extension-color-wheel",
+  "version": "1.0.0",
+  "author": "https://github.com/anloba20",
+  "description": "A Visual Studio Code extension for creating harmonious color palettes without leaving the editor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anloba20/vscode-extension-color-wheel.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anloba20/vscode-extension-color-wheel/issues"
+  },
+  "homepage": "https://github.com/anloba20/vscode-extension-color-wheel#readme"
+}
