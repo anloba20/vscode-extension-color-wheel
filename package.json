@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "color-wheel.helloWorld",
-        "title": "Hello World"
+        "command": "color-wheel.open",
+        "title": "Color Wheel: Open"
       }
     ]
   },
