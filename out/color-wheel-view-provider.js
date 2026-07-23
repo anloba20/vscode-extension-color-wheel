@@ -2,8 +2,57 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ColorWheelViewProvider = void 0;
 class ColorWheelViewProvider {
+    static viewType = 'color-wheel.sidebar';
     resolveWebviewView(webviewView) {
-        webviewView.webview.html = '<h1>Color Wheel</h1>';
+        webviewView.webview.options = {
+            enableScripts: false,
+        };
+        webviewView.webview.html = this.getHtml();
+    }
+    getHtml() {
+        return `<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          >
+
+          <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'none'; style-src 'unsafe-inline';"
+          >
+
+          <title>Color Wheel</title>
+
+          <style>
+            body {
+              padding: 16px;
+              color: var(--vscode-foreground);
+              background: var(--vscode-sideBar-background);
+              font-family: var(--vscode-font-family);
+            }
+
+            h1 {
+              margin: 0 0 8px;
+              font-size: 18px;
+            }
+
+            p {
+              margin: 0;
+              color: var(--vscode-descriptionForeground);
+              line-height: 1.5;
+            }
+          </style>
+        </head>
+
+        <body>
+          <h1>Color Wheel</h1>
+          <p>Your palette will appear here.</p>
+        </body>
+      </html>`;
     }
 }
 exports.ColorWheelViewProvider = ColorWheelViewProvider;

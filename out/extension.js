@@ -46,14 +46,14 @@ function activate(context) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "color-wheel" is now active!');
     const provider = new color_wheel_view_provider_1.ColorWheelViewProvider();
-    const viewRegistration = vscode.window.registerWebviewViewProvider('color-wheel.sidebar', provider);
+    const viewRegistration = vscode.window.registerWebviewViewProvider(color_wheel_view_provider_1.ColorWheelViewProvider.viewType, provider);
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with registerCommand
     // The commandId parameter must match the command field in package.json
-    const disposable = vscode.commands.registerCommand('color-wheel.open', () => {
+    const disposable = vscode.commands.registerCommand('color-wheel.open', async () => {
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
-        vscode.window.showInformationMessage('Color Wheel: Open!');
+        await vscode.commands.executeCommand(`${color_wheel_view_provider_1.ColorWheelViewProvider.viewType}.focus`);
     });
     context.subscriptions.push(disposable, viewRegistration);
 }
