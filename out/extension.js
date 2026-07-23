@@ -38,21 +38,24 @@ exports.deactivate = deactivate;
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = __importStar(require("vscode"));
+const color_wheel_view_provider_1 = require("./color-wheel-view-provider");
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "color-wheel" is now active!');
+    const provider = new color_wheel_view_provider_1.ColorWheelViewProvider();
+    const viewRegistration = vscode.window.registerWebviewViewProvider(color_wheel_view_provider_1.ColorWheelViewProvider.viewType, provider);
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with registerCommand
     // The commandId parameter must match the command field in package.json
-    const disposable = vscode.commands.registerCommand('color-wheel.helloWorld', () => {
+    const disposable = vscode.commands.registerCommand('color-wheel.open', async () => {
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from Color wheel!');
+        await vscode.commands.executeCommand(`${color_wheel_view_provider_1.ColorWheelViewProvider.viewType}.focus`);
     });
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable, viewRegistration);
 }
 // This method is called when your extension is deactivated
 function deactivate() { }
