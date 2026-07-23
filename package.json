@@ -17,7 +17,25 @@
         "command": "color-wheel.open",
         "title": "Color Wheel: Open"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "color-wheel",
+          "title": "Color Wheel",
+          "icon": "media/color-wheel-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "color-wheel": [
+        {
+          "type": "webview",
+          "id": "color-wheel.sidebar",
+          "name": "Palette"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
